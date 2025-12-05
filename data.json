@@ -1,0 +1,37 @@
+[
+  {
+    "nama": "ANDI ALIANSYAH",
+    "nisn": "0079405759",
+    "tgl_lahir": "2007-05-29",
+    "ttl": "LEBAK, 2007-05-29",
+    "jurusan": "Otomatisasi Dan Tata Kelola Perkantoran",
+    "status": "Lulus",
+    "foto": "foto/andi.jpg",
+    "nilai": [
+      {
+        "mapel": "Pendidikan Agama Islam",
+        "nilai": 78
+      },
+      {
+        "mapel": "Pendidikan Kewarganegaraan",
+        "nilai": 80
+      },
+      {
+        "mapel": "Bahasa Indonesia",
+        "nilai": 85
+      },
+      {
+        "mapel": "Matematika",
+        "nilai": 75
+      },
+      {
+        "mapel": "Bahasa Inggris",
+        "nilai": 81
+      },
+      {
+        "mapel": "Konsentrasi Keahlian",
+        "nilai": 82
+      }
+    ]
+  }
+]

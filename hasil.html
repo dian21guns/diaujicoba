@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasil Kelulusan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2 class="title">Data Siswa</h2>
+
+    <div class="photo-box">
+        <img id="foto" src="" alt="Foto Siswa">
+    </div>
+
+    <table class="table-info">
+        <tr><td>Nama</td><td id="nama"></td></tr>
+        <tr><td>NISN</td><td id="nisn"></td></tr>
+        <tr><td>Tempat/Tanggal Lahir</td><td id="ttl"></td></tr>
+        <tr><td>Kompetensi Keahlian</td><td id="jurusan"></td></tr>
+        <tr><td>Status</td><td id="status" class="status"></td></tr>
+    </table>
+
+    <h3 class="subtitle">Nilai Siswa</h3>
+
+    <table class="table-nilai">
+        <tr>
+            <th>Mata Pelajaran</th>
+            <th>Nilai</th>
+        </tr>
+        <tbody id="nilai-body"></tbody>
+
+        <tr>
+            <th>Rata-rata</th>
+            <th id="rata"></th>
+        </tr>
+    </table>
+
+    <button onclick="window.print()" class="btn">
+        Cetak Bukti Kelulusan
+    </button>
+
+</div>
+
+<script>
+async function loadData() {
+    const url = new URLSearchParams(window.location.search);
+    const nisnCari = url.get("nisn");
+    const tglCari = url.get("tgl");
+
+    const request = await fetch("data.json");
+    const data = await request.json();
+
+    const siswa = data.find(s => s.nisn === nisnCari && s.tgl_lahir === tglCari);
+
+    if (!siswa) {
+        document.body.innerHTML = "<h2 style='text-align:center;color:red'>Data tidak ditemukan!</h2>";
+        return;
+    }
+
+    document.getElementById("foto").src = siswa.foto;
+    document.getElementById("nama").textContent = siswa.nama;
+    document.getElementById("nisn").textContent = siswa.nisn;
+    document.getElementById("ttl").textContent = siswa.ttl;
+    document.getElementById("jurusan").textContent = siswa.jurusan;
+    document.getElementById("status").textContent = siswa.status;
+
+    let tbody = "";
+    let total = 0;
+
+    siswa.nilai.forEach(n => {
+        tbody += `<tr><td>${n.mapel}</td><td>${n.nilai}</td></tr>`;
+        total += n.nilai;
+    });
+
+    document.getElementById("nilai-body").innerHTML = tbody;
+    document.getElementById("rata").textContent = (total / siswa.nilai.length).toFixed(2);
+}
+
+loadData();
+</script>
+
+</body>
+</html>
