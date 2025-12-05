@@ -41,6 +41,9 @@ body {
     width: 200px;
     border: 5px solid #ddd;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 .table-info, .table-nilai {
     width: 100%;
