@@ -57,6 +57,7 @@ body {
 .table-info td, .table-nilai td, .table-nilai th {
     border: 1px solid #ccc;
     padding: 10px;
+    text-align: center;
 }
 .btn {
     width: 100%;
