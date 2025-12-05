@@ -52,6 +52,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 25px;
+    text-align: center;
 }
 .table-info td, .table-nilai td, .table-nilai th {
     border: 1px solid #ccc;
